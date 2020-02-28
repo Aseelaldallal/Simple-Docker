@@ -14,12 +14,11 @@ var client = redis_1.default.createClient({
 });
 client.set("visits", "0");
 app.get("/", function (req, res) {
-    process.exit(0);
     client.get("visits", function (err, visits) {
         res.send("Number of visits is " + visits);
         client.set("visits", (+visits + 1).toString());
     });
 });
 app.listen(8081, function () {
-    console.log("This is me");
+    console.log("Listening on 8081");
 });
